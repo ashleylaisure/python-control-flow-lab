@@ -170,39 +170,37 @@ def determine_season():
 
 # determine_season()
 
-# Exercise 6: Number Guessing Game
+# Exercise 6: Number Guessing Game -------------------------
 
 def guess_number():
     
     target = 74
     
-    guess = input("Guess a number within a range of 1 to 100: ")
-    
-    try:
-        guess_num = int(guess)
+    for attempts in range(5):
         
-        if guess_num < 1 or guess_num > 100:
-            print("Invalid input: please enter a number between 1 and 100")
-            return guess_number()
+        guess = input(f"You have {5 - attempts} attempts left: Guess a number within a range of 1 to 100 : ")
         
-        for guesses in range(5):
+        try:
+            user_num = int(guess)
             
-            print(f"This is guess number {guesses + 1}, you have 5 tries")
+            if user_num < 1 or user_num > 100:
+                print("Invalid input: please enter a number between 1 and 100")
+                continue
             
-            if guess_num == target:
-                print("Congratulations, you guessed correctly!")
-            elif guess_num < target: 
-                print("Guess is too low")
-            elif guess_num > target: 
-                print("Guess is too high.")
-                
-            if guesses == 5 and guess_num != target:
+            if attempts == 4 and user_num != target:
                 print("Sorry, you failed to guess the number in five attempts.")
-    
-    except ValueError:
-            print("Invaild input: Please enter in a number")
-            return guess_number()
-    
+                break
+            
+            if user_num == target:
+                print("Congratulations, you guessed correctly!")
+                break
+            elif user_num < target: 
+                print("Guess is too low")
+            elif user_num > target: 
+                print("Guess is too high.")
+            
+            
+        except ValueError:
+            print("Invaild input: Please enter a number")
 
-        
 guess_number()
