@@ -43,10 +43,10 @@ def check_voting_eligibility():
             print(f"Congratulations at {int_age} years old you can vote!")
             
         else:
-            print("Please enter a postive age")
+            print("Please enter a postive number")
             return check_voting_eligibility()
     except ValueError:
-        print("Invaild input: Please enter in a number")
+        print("Invaild input: Please enter a number")
         return check_voting_eligibility()
         
 # check_voting_eligibility()
@@ -70,7 +70,7 @@ def calculate_dog_years():
             print("Please enter a postive age")
             return calculate_dog_years()
     except ValueError:
-        print("Invaild input: Please enter in a number")
+        print("Invaild input: Please enter a number")
         return calculate_dog_years()
         
 # calculate_dog_years()
@@ -178,7 +178,12 @@ def guess_number():
     
     for attempts in range(5):
         
-        guess = input(f"You have {5 - attempts} attempts left: Guess a number within a range of 1 to 100 : ")
+        if attempts == 4:
+            guess = input("Last Chance! Guess a number within a range of 1 to 100 : ")
+        elif attempts == 0:
+            guess = input("You have 5 chances to guess the correct number: Guess a number within a range of 1 to 100 : ")
+        else:
+            guess = input(f"You have {5 - attempts} attempts left: Guess a number within a range of 1 to 100 : ")
         
         try:
             user_num = int(guess)
